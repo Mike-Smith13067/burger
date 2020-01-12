@@ -1,0 +1,23 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Week 14 homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mike-Smith13067/burger.git"
+  },
+  "author": "Mike Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mike-Smith13067/burger/issues"
+  },
+  "homepage": "https://github.com/Mike-Smith13067/burger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
+  }
+}
