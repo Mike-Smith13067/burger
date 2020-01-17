@@ -2,7 +2,7 @@ var connection = require("../config/connection.js");
 
 var orm = {
     selectAll: function(table, cb) {
-        var queryString = "SELECT * FROM ?";
+        var queryString = "SELECT * FROM ??";
         connection.query(queryString, [table], function (err, result) {
             if (err) throw err;
             cb(result);
@@ -24,4 +24,4 @@ var orm = {
     }
 };
 
-module.export = orm;
+module.exports = orm;
