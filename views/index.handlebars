@@ -1,0 +1,62 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <img src="assets/img/burger.jpg" alt="burger">
+        <h1 class="display-4">Eat-Da-Burger</h1>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6" id="uneaten">
+            <h2>Burgers available to be eaten</h2>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{!-- {{> /burger-block devoured=false}} --}}
+                <li>
+                    {{id}}. {{burger_name}}
+
+                    <button class="devour btn btn-light" data-id="{{id}}" data-newdevour="{{devoured}}">
+                        {{#if devoured}}DELETE!{{else}}DEVOUR!{{/if}}
+                    </button>
+                </li>
+
+                {{/unless}}
+
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-lg-6" id="eaten">
+            <h2>Burgers you have eaten.</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    {{id}}. {{burger_name}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+
+
+            <form class="form-group" id="create">
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Add a new burger</label>
+                    <textarea class="form-control" id="new-burger" rows="3"></textarea>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-light">Submit</button><br>
+            </form>
+        </div>
+    </div>
+    <p>Create a burger here.</p>
+</div>
+
+</div>
