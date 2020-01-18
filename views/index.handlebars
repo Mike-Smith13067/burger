@@ -13,13 +13,9 @@
             <ul>
                 {{#each burgers}}
                 {{#unless devoured}}
-                {{!-- {{> /burger-block devoured=false}} --}}
+                {{> burgers/burger-block devoured=false}}
                 <li>
-                    {{id}}. {{burger_name}}
-
-                    <button class="devour btn btn-light" data-id="{{id}}" data-newdevour="{{devoured}}">
-                        {{#if devoured}}DELETE!{{else}}DEVOUR!{{/if}}
-                    </button>
+                    &nbsp;{{id}}. {{burger_name}}
                 </li>
 
                 {{/unless}}
@@ -32,8 +28,9 @@
             <ul>
                 {{#each burgers}}
                 {{#if devoured}}
+                {{>burgers/burger-block devoured = true}}
                 <li>
-                    {{id}}. {{burger_name}}
+                    &nbsp;{{id}}. {{burger_name}}
                 </li>
                 {{/if}}
                 {{/each}}
@@ -49,7 +46,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Add a new burger</label>
-                    <textarea class="form-control" id="new-burger" rows="3"></textarea>
+                    <textarea class="form-control" id="newBurger" rows="3"></textarea>
                 </div>
 
                 <button type="submit" id="submit" class="btn btn-light">Submit</button><br>
@@ -60,3 +57,41 @@
 </div>
 
 </div>
+
+<script type="text/javascript">
+    // Create new burger
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+        var newBurger = $("#newBurger").val().trim();
+        if (newBurger == "") {
+            // $("#error").html("Please enter a valid burger");
+
+        } else {
+            console.log(newBurger);
+            var createdBurger = {
+                burger_name: newBurger,
+                devoured: false
+            }
+            $.post("api/burgers", createdBurger, function (data) {
+                $("#newBurger").val("");
+                location.reload();
+            });
+        };
+    });
+    // devour a burger
+    $("#.devour").on("click", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id";)
+        var devour = $(this).data("newdevour");
+        console.log(id, devour);
+        var eatenBurger = {
+        devoured: true
+    };
+    $.post("api/burgers", eatenBurger, function (data) {
+        location.reload();
+    });
+    console.log("Burger " + id + " eaten");
+    location.reload();
+    });
+};
+</script>
