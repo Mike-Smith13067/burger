@@ -21,8 +21,16 @@ router.post("/api/burgers", function(req, res) {
 });
 
 router.put("/api/burgers/:id", function(req, res) {
-    burger.update("devoured", req.body.devoured, req.params.id, function(result) {
+    burger.update("devoured", true, req.params.id, function(result) {
         if (result.changedRows === 0) {
+            return res.status(404).end();
+        }
+        res.status(200).end();
+    });
+});
+router.delete("/api/burgers/:id", function(req, res) {
+    burger.delete("id", req.params.id, function(result) {
+        if (result.affectedRows === 0) {
             return res.status(404).end();
         }
         res.status(200).end();

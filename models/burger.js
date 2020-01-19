@@ -15,6 +15,11 @@ var burger = {
         orm.updateOne("burgers", col, val, "id", id, function (result) {
             cb(result);
         });
+    },
+    delete: function(condCol, condVal, cb) {
+        orm.deleteOne("burgers", condCol, condVal, function (result) {
+            cb(result);
+        });
     }
 }
 
