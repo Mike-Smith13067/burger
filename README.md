@@ -16,6 +16,6 @@ Express
 
 Screenshot
 
-![screenshot](https://github.com/Mike-Smith13067/bamazon/blob/master/images/start.png)
+![screenshot](https://github.com/Mike-Smith13067/burger/tree/master/public/assets/img/screenshot.png)
 
 
